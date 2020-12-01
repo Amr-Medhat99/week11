@@ -24,3 +24,4 @@ document.getElementById("btnSendMessage").addEventListener("click", function (ev
     });
     event.preventDefault();
 });
+

@@ -1,0 +1,60 @@
+﻿@model week11.Models.teacher
+
+@{
+    ViewData["Title"] = "ShowTeacherData";
+}
+
+<h1>ShowTeacherData</h1>
+
+<div>
+    <h4>teacher</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.teacherID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.teacherID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.teacherAge)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.teacherAge)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.teacherFirstName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.teacherFirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.teacherLastName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.teacherLastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.teacherGender)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.teacherGender)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.teacherPic)
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="data:image/png;base64, @Convert.ToBase64String(Model.teacherPic)" alt="Teacher Picture" />
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AppUserId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AppUserId)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

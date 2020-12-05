@@ -24,6 +24,7 @@ namespace week11.Models
         [Required]
         [Display(Name = "Gender")]
         public string teacherGender { get; set; }
+        public byte[] teacherPic { get; set; }
         public virtual IdentityUser AppUser { get; set; }
         public string AppUserId{ get; set; }
 

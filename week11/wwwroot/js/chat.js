@@ -3,7 +3,7 @@
 document.getElementById("btnSendMessage").disabled = true;
 
 connection.on("RecieveMessage", function (user, message) {
-    var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");    
     var encodeMsg = user + " says " + msg;
     var li = document.createElement("li");
     li.textContent = encodeMsg;
@@ -24,4 +24,3 @@ document.getElementById("btnSendMessage").addEventListener("click", function (ev
     });
     event.preventDefault();
 });
-

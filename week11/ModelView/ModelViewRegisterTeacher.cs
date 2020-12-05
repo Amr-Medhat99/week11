@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -41,5 +42,6 @@ namespace week11.ModelView
         [Required]
         [Display(Name = "Gender")]
         public string teacherGender { get; set; }
+        public IFormFile teacherPic { get; set; }
     }
 }

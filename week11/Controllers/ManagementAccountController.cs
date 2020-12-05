@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -143,6 +145,7 @@ namespace week11.Controllers
                         teacherGender = obj.teacherGender,
                         teacherLastName = obj.teacherLastName
                     };
+                    teacher.teacherPic =convertFromFileToByte(obj.teacherPic);
                     _dbcontext.teachers.Add(teacher);
                     _dbcontext.SaveChanges();
                     await _usermanager.AddToRoleAsync(user, "TeacherRole");
@@ -159,6 +162,21 @@ namespace week11.Controllers
 
             }
             return View(obj);
+        }
+        //Function To Convert From IFormFile To Array Of Byte 
+        private byte[] convertFromFileToByte(IFormFile teacherPic)
+        {
+            using (var ms=new MemoryStream())
+            {
+                teacherPic.CopyTo(ms);
+                return ms.ToArray();
+            }
+        }
+        public IActionResult ShowTeacherData()
+        {
+            var userId = _usermanager.GetUserId(User);
+            var user = _dbcontext.teachers.FirstOrDefault(t => t.AppUserId == userId);
+            return View(user);
         }
         [HttpGet]
         public IActionResult RegistermanagerLayout()
